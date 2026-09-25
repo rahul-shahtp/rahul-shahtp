@@ -1,0 +1,20 @@
+{
+	"name": "rahul-shahtp-profile",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"generate:contribution-animation": "bun run scripts/generate-contribution-animation.ts",
+		"test": "bun test",
+		"typecheck": "tsc --noEmit",
+		"check": "biome check scripts package.json tsconfig.json biome.json && tsc --noEmit && bun test"
+	},
+	"dependencies": {
+		"ky": "^2.1.0",
+		"zod": "^4.6.5"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.5.14",
+		"@types/bun": "^1.4.2",
+		"typescript": "^7.0.2"
+	}
+}

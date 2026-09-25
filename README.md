@@ -177,9 +177,13 @@ Long-term vision: integrate AI inference accelerator with the RV32I pipeline cor
 
 ---
 
+## Contribution Flight
 
+<div align="center">
 
----
+<img src="assets/contribution-spaceship.svg" width="100%" alt="Spaceship firing green energy bolts at active GitHub contribution squares"/>
+
+_Regenerated automatically from GitHub contribution activity._
 
 </div>
 

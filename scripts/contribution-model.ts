@@ -14,7 +14,7 @@ export type ContributionDay = {
 export type ContributionCell = ContributionDay | null;
 export type ContributionCalendar = readonly (readonly ContributionCell[])[];
 
-export type ShotTarget = {
+export type ClockTarget = {
 	readonly date: string;
 	readonly level: Exclude<ContributionLevel, 0>;
 	readonly contributionCount: number;
@@ -98,17 +98,17 @@ export const normalizeContributionCalendar = (
 	);
 };
 
-export const selectShotTargets = (
+export const selectClockTargets = (
 	calendar: ContributionCalendar,
 	limit: number,
-): readonly ShotTarget[] => {
+): readonly ClockTarget[] => {
 	if (!Number.isInteger(limit) || limit < 0) {
 		throw new ContributionModelError(
-			"Shot target limit must be a non-negative integer",
+			"Clock target limit must be a non-negative integer",
 		);
 	}
 
-	const targets: ShotTarget[] = [];
+	const targets: ClockTarget[] = [];
 	for (const week of calendar) {
 		for (const day of week) {
 			if (day === null || day.level === 0) {

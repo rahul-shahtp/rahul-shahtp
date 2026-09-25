@@ -1,7 +1,6 @@
 import type {
 	ContributionCalendar,
 	ContributionCell,
-	ShotTarget,
 } from "./contribution-model.ts";
 
 export const CANVAS_WIDTH = 1000;
@@ -11,17 +10,18 @@ export const GRID_Y = 122;
 export const CELL_SIZE = 10;
 export const CELL_GAP = 4;
 export const CELL_STEP = CELL_SIZE + CELL_GAP;
-export const FLIGHT_START_X = 74;
-export const FLIGHT_END_X = 926;
-export const FLIGHT_Y = 72;
-export const FLIGHT_DURATION_SECONDS = 18;
+export const CLOCK_DURATION_SECONDS = 12;
+export const CLOCK_ROW_STAGGER_SECONDS = 0.85;
+export const CLOCK_TRACK_START_X = 42;
+export const CLOCK_TRACK_END_X = 958;
+export const CLOCK_REGISTER_X = 260;
+export const CLOCK_REGISTER_Y = 80;
+export const CLOCK_BIT_COUNT = 16;
 
 export type Point = {
 	readonly x: number;
 	readonly y: number;
 };
-
-export type PositionedTarget = ShotTarget & Point;
 
 export type MonthLabel = Point & {
 	readonly label: string;
@@ -47,45 +47,17 @@ export const cellCoordinates = (column: number, row: number): Point => ({
 	y: GRID_Y + row * CELL_STEP,
 });
 
-export const cellCenter = (column: number, row: number): Point => {
-	const coordinates = cellCoordinates(column, row);
-	return {
-		x: coordinates.x + CELL_SIZE / 2,
-		y: coordinates.y + CELL_SIZE / 2,
-	};
-};
+export const clockTrackY = (row: number): number =>
+	GRID_Y + row * CELL_STEP + CELL_SIZE / 2;
 
-const createPositionMap = (
-	calendar: ContributionCalendar,
-): ReadonlyMap<string, Point> => {
-	const positions = new Map<string, Point>();
-	calendar.forEach((week, column) => {
-		week.forEach((day: ContributionCell, row) => {
-			if (day !== null) {
-				positions.set(day.date, cellCoordinates(column, row));
-			}
-		});
-	});
-	return positions;
-};
+export const clockSignalBegin = (row: number): number =>
+	-row * CLOCK_ROW_STAGGER_SECONDS;
 
-export const positionShotTargets = (
-	calendar: ContributionCalendar,
-	targets: readonly ShotTarget[],
-): readonly PositionedTarget[] => {
-	const positions = createPositionMap(calendar);
-	const positionedTargets: PositionedTarget[] = [];
-
-	for (const target of targets) {
-		const coordinates = positions.get(target.date);
-		if (coordinates !== undefined) {
-			positionedTargets.push({ ...target, ...coordinates });
-		}
-	}
-
-	return positionedTargets.sort((left, right) =>
-		left.date.localeCompare(right.date),
-	);
+export const clockImpactRatio = (x: number, row: number): number => {
+	const trackProgress =
+		(x - CLOCK_TRACK_START_X) / (CLOCK_TRACK_END_X - CLOCK_TRACK_START_X);
+	const rowOffset = (row * CLOCK_ROW_STAGGER_SECONDS) / CLOCK_DURATION_SECONDS;
+	return Math.min(1, Math.max(0, trackProgress + rowOffset));
 };
 
 export const renderMonthLabels = (
@@ -115,4 +87,6 @@ export const renderMonthLabels = (
 };
 
 export const countActiveDays = (calendar: ContributionCalendar): number =>
-	calendar.flat().filter((day) => day !== null && day.level > 0).length;
+	calendar
+		.flat()
+		.filter((day: ContributionCell) => day !== null && day.level > 0).length;

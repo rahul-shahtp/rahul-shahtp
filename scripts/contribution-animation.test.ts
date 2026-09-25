@@ -6,7 +6,7 @@ import {
 	type ContributionDay,
 	type ContributionLevel,
 	normalizeContributionCalendar,
-	selectShotTargets,
+	selectClockTargets,
 } from "./contribution-model.ts";
 
 const createDay = (
@@ -45,7 +45,7 @@ describe("normalizeContributionCalendar", () => {
 	});
 });
 
-describe("selectShotTargets", () => {
+describe("selectClockTargets", () => {
 	test("prioritizes higher levels and then newer dates", () => {
 		// Given: active cells with different levels and dates
 		const calendar: ContributionCalendar = [
@@ -55,7 +55,7 @@ describe("selectShotTargets", () => {
 		];
 
 		// When: the target budget is smaller than the active-cell count
-		const targets = selectShotTargets(calendar, 2);
+		const targets = selectClockTargets(calendar, 2);
 
 		// Then: the strongest recent cells win
 		expect(targets.map(({ date }) => date)).toEqual([
@@ -66,7 +66,7 @@ describe("selectShotTargets", () => {
 });
 
 describe("renderContributionAnimation", () => {
-	test("renders an accessible, deterministic spaceship scene without a snake path", () => {
+	test("renders an accessible, deterministic binary clock without a pulse, spacecraft, or snake", () => {
 		// Given: a normalized contribution calendar
 		const calendar = normalizeContributionCalendar(createContinuousDays(140));
 
@@ -78,11 +78,18 @@ describe("renderContributionAnimation", () => {
 		expect(first).toBe(second);
 		expect(first).toContain('role="img"');
 		expect(first).toContain('aria-labelledby="title description"');
-		expect(first).toContain('id="spaceship"');
-		expect(first).toContain('class="shot-motion"');
+		expect(first).toContain('id="binary-clock"');
+		expect(first).toContain('class="bit-register"');
+		expect(first).toContain('class="clock-signal"');
+		expect(first).toContain('class="clock-cell-motion"');
+		expect(first).toContain('class="static-clock"');
 		expect(first).toContain("prefers-reduced-motion: reduce");
 		expect(first).toContain("@media (max-width:480px)");
 		expect(first).toContain("data-date=");
+		expect(first).not.toContain("spaceship");
+		expect(first).not.toContain("pulse");
+		expect(first).not.toContain("flight");
+		expect(first).not.toContain("shot-motion");
 		expect(first).not.toContain("snake");
 	});
 });

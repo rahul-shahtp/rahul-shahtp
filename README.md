@@ -177,11 +177,11 @@ Long-term vision: integrate AI inference accelerator with the RV32I pipeline cor
 
 ---
 
-## Contribution Flight
+## Contribution Binary Clock
 
 <div align="center">
 
-<img src="assets/contribution-spaceship.svg" width="100%" alt="Spaceship firing green energy bolts at active GitHub contribution squares"/>
+<img src="assets/contribution-binary-clock.svg" width="100%" alt="Binary clock signals switching active GitHub contribution squares from zero to one"/>
 
 _Regenerated automatically from GitHub contribution activity._
 

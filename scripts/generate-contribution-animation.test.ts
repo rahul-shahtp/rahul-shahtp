@@ -17,7 +17,7 @@ afterEach(async () => {
 describe("runContributionAnimation", () => {
 	test("generates a deterministic SVG from a local contribution snapshot", async () => {
 		// Given: a temporary JSON snapshot and output path
-		const directory = await mkdtemp(join(tmpdir(), "contribution-flight-"));
+		const directory = await mkdtemp(join(tmpdir(), "contribution-clock-"));
 		temporaryDirectories.push(directory);
 		const inputPath = join(directory, "input.json");
 		const outputPath = join(directory, "animation.svg");
@@ -34,8 +34,12 @@ describe("runContributionAnimation", () => {
 
 		// Then: it writes the expected animation and reports active days
 		expect(result).toEqual({ outputPath, activeDays: 2 });
-		expect(svg).toContain('id="spaceship"');
+		expect(svg).toContain('id="binary-clock"');
+		expect(svg).toContain('class="bit-register"');
+		expect(svg).toContain('class="clock-signal"');
 		expect(svg).toContain('data-date="2026-01-05"');
+		expect(svg).not.toContain("spaceship");
+		expect(svg).not.toContain("pulse");
 		expect(svg).not.toContain("snake");
 	});
 });

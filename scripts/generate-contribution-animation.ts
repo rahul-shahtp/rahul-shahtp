@@ -10,7 +10,7 @@ import {
 	normalizeContributionCalendar,
 } from "./contribution-model.ts";
 
-const DEFAULT_OUTPUT_PATH = "assets/contribution-spaceship.svg";
+const DEFAULT_OUTPUT_PATH = "assets/contribution-binary-clock.svg";
 
 type EnvironmentKey =
 	| "GITHUB_USERNAME"

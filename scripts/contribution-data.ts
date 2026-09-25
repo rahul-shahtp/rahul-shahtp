@@ -189,7 +189,7 @@ export const buildContributionWindow = (now: Date): ContributionWindow => {
 };
 
 const CONTRIBUTION_QUERY = `
-  query ContributionFlight($login: String!, $from: DateTime!, $to: DateTime!) {
+  query ContributionClock($login: String!, $from: DateTime!, $to: DateTime!) {
     user(login: $login) {
       contributionsCollection(from: $from, to: $to) {
         contributionCalendar {

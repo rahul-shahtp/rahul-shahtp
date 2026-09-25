@@ -1,11 +1,11 @@
-name: Update contribution flight
+name: Update contribution binary clock
 
 on:
   push:
     branches:
       - main
     paths-ignore:
-      - "assets/contribution-spaceship.svg"
+      - "assets/contribution-binary-clock.svg"
   schedule:
     - cron: "17 */6 * * *"
   workflow_dispatch:
@@ -14,7 +14,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: contribution-flight
+  group: contribution-binary-clock
   cancel-in-progress: true
 
 jobs:
@@ -39,7 +39,7 @@ jobs:
       - name: Validate generator
         run: bun run typecheck && bun test
 
-      - name: Generate contribution flight
+      - name: Generate contribution binary clock
         env:
           GITHUB_USERNAME: ${{ github.repository_owner }}
           CONTRIBUTIONS_TOKEN: ${{ secrets.CONTRIBUTIONS_TOKEN || github.token }}
@@ -47,13 +47,13 @@ jobs:
 
       - name: Commit updated animation
         run: |
-          if git diff --quiet -- assets/contribution-spaceship.svg; then
-            echo "Contribution flight is already current."
+          if git diff --quiet -- assets/contribution-binary-clock.svg; then
+            echo "Contribution binary clock is already current."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- assets/contribution-spaceship.svg
-          git commit -m "chore: update contribution flight"
+          git add -- assets/contribution-binary-clock.svg
+          git commit -m "chore: update contribution binary clock"
           git push

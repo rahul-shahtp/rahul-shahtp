@@ -11,8 +11,8 @@
 ![B.Tech ECE](https://img.shields.io/badge/B.Tech%20ECE-USICT%20GGSIPU-7C3AED?style=flat-square&labelColor=0f172a)
 ![Specialization](https://img.shields.io/badge/Specialization-VLSI%20%26%20Digital%20Design-6D28D9?style=flat-square&labelColor=0f172a)
 ![Location](https://img.shields.io/badge/Location-Delhi%2C%20India-4F46E5?style=flat-square&labelColor=0f172a&logo=googlemaps&logoColor=white)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-rahul--shahtp-0A66C2?style=flat-square&labelColor=0f172a)](https://linkedin.com/in/rahul-shah-510a05321)
-[![Email](https://img.shields.io/badge/Email-thanda%40opencores.org-EA580C?style=flat-square&labelColor=0f172a)](mailto:thanda@opencores.org)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-rahul--shahtp-0A66C2?style=flat-square&labelColor=0f172a)](https://linkedin.com/in/rahulshahtp)
+[![Email](https://img.shields.io/badge/Email-thanda%40opencores.org-EA580C?style=flat-square&labelColor=0f172a)](mailto:rahulshah1661@gmail.com)
 [![GitHub](https://img.shields.io/badge/GitHub-rahul--shahtp-ffffff?style=flat-square&labelColor=0f172a)](https://github.com/rahul-shahtp)
 </div>
 
@@ -163,19 +163,6 @@ Long-term vision: integrate AI inference accelerator with the RV32I pipeline cor
 
 ---
 
-## Key Achievements
-
-<div align="center">
-
-| Achievement | Details |
-|-------------|---------|
-| 🏆 **Clean Tapeout** | TLC RTL→GDS: Zero DRC/LVS on Sky130A |
-| 🏆 **RV32IM Pipeline** | 22-module · 5-stage · 16/16 tests passing |
-| 🏆 **HDLBits** | FSM, shift registers, PS/2 scancode debugging |
-
-</div>
-
----
 
 ## Contribution Binary Clock
 
@@ -217,9 +204,10 @@ open_to:
 
 <div align="center">
 
-[![Gmail](https://img.shields.io/badge/Gmail-EA580C?style=for-the-badge&logo=gmail&logoColor=white)](mailto:thanda@opencores.org)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rahul-shah-510a05321)
+[![Gmail](https://img.shields.io/badge/Gmail-EA580C?style=for-the-badge&logo=gmail&logoColor=white)](mailto:rahulshah1661@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rahulshahtp)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rahul-shahtp)
+[![Resume](https://img.shields.io/badge/Resume-12563EB?style=for-the-badge&logo=googledrive&logoColor=white)](https://drive.google.com/file/d/1lAzB11vuuugzy-Wh7ent7n7OSvfkwtU6/view?usp=sharing)
 
 
 </div>
